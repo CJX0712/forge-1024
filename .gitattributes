@@ -1,0 +1,7 @@
+# 统一换行符为 LF，保证 Windows 开发 / Linux·macOS CI 一致
+* text=auto eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.yml text eol=lf

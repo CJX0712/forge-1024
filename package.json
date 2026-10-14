@@ -1,0 +1,40 @@
+{
+  "name": "forge-1024",
+  "version": "1.0.0",
+  "description": "AI 微指令内核：1024 条可验证微指令，零依赖、零构建、可复现",
+  "keywords": [
+    "ai",
+    "micro-kernel",
+    "micro-ops",
+    "autodiff",
+    "linalg",
+    "machine-learning",
+    "zero-dependency",
+    "reproducible"
+  ],
+  "type": "module",
+  "author": "晨星 <133180712@qq.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "selftest": "node tools/selftest.mjs",
+    "bench": "node bench/bench.mjs",
+    "build": "node tools/bundle-html.mjs",
+    "verify:bundle": "node tools/verify-bundle.mjs",
+    "docs:ops": "node tools/gen-ops-doc.mjs",
+    "verify:catalog": "node --test test/catalog.test.mjs",
+    "example:linreg": "node examples/01-linear-regression.mjs",
+    "example:gmm": "node examples/02-gmm-clustering.mjs",
+    "example:pca": "node examples/03-pca-whitening.mjs",
+    "example:xor": "node examples/04-mlp-xor.mjs",
+    "example:attention": "node examples/05-attention.mjs",
+    "example:catalog": "node examples/06-op-catalog.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CJX0712/forge-1024.git"
+  }
+}

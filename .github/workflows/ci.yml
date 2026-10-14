@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: 编目自检（1024 条硬金标准）
+        run: node tools/selftest.mjs
+      - name: 单元测试
+        run: node --test
+      - name: 示例冒烟
+        shell: bash
+        run: |
+          for f in examples/*.mjs; do echo "--- $f"; node "$f" > /dev/null || exit 1; done
+      - name: 生成文档
+        run: node tools/gen-ops-doc.mjs
+      - name: 基准
+        run: node bench/bench.mjs
